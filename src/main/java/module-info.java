@@ -12,6 +12,7 @@ module com.example.barcodegenerator_v1 {
     requires com.almasb.fxgl.all;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires java.sql;
 
     opens com.example.barcodegenerator_v1 to javafx.fxml;
     exports com.example.barcodegenerator_v1;

@@ -10,7 +10,14 @@ import java.io.IOException;
 public class BarcodeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("barcode-generator.fxml"));
+        FXMLLoader fxmlLoader;
+        // Provjeri da li ima korisnika u bazi podataka i prikazi odgovarajuci prozor
+        // Ako nema korisnika, prikazi formu za unos korisnika inace prikazi glavni prozor
+        if (DatabaseHandler.getAllUsers().isEmpty()) {
+            fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("user-form-view.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("home-view.fxml"));
+        }
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -18,6 +25,7 @@ public class BarcodeApplication extends Application {
     }
 
     public static void main(String[] args) {
+        DatabaseHandler.initialize();
         launch();
     }
 }

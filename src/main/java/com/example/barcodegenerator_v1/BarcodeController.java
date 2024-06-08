@@ -2,21 +2,13 @@ package com.example.barcodegenerator_v1;
 import com.google.zxing.WriterException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class BarcodeController {
-    @FXML
-    private Label welcomeText;
-    @FXML
-    private Button generateBarcodeButton; // Add a button for barcode generation
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    private Button homeButton;
 
     @FXML
     protected void onGenerateBarcodeClick() throws IOException, WriterException {
@@ -37,7 +29,7 @@ public class BarcodeController {
                 "Troskovi za 1. mjesec"; // Replace with your desired text
 
         // Specify the output file path (adjust as needed)
-        String filePath = "C:\\Users\\Neven\\Desktop\\barcode.jpg";//put do slike
+        String filePath = "C:\\Users\\tinpr\\Desktop\\barcode.jpg";
 
         BarcodeGenerator.generateBarcode(textToEncode, filePath);
 
@@ -46,14 +38,10 @@ public class BarcodeController {
 
     @FXML
     protected void switchToHelloScene() {
-        Stage stage = (Stage) welcomeText.getScene().getWindow();
-        SceneSwitcher.switchScene(stage, "hello-view.fxml", "Hello Scene");
+        Stage stage = (Stage) homeButton.getScene().getWindow();
+        SceneSwitcher.switchScene(stage, "home-view.fxml", "Hello Scene");
     }
 
-    @FXML
-    protected void switchToBarcodeScene() {
-        Stage stage = (Stage) welcomeText.getScene().getWindow();
-        SceneSwitcher.switchScene(stage, "barcode-generator.fxml", "Barcode Scene");
-    }
+
 
 }
