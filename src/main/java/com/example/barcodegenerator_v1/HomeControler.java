@@ -44,4 +44,9 @@ public class HomeControler {
     protected void onManageUserButtonClick() throws IOException{
         SceneSwitcher.switchScene((Stage) welcomeText.getScene().getWindow(), "user-form-view.fxml", "User Form");
     }
+    @FXML
+    protected void switchToRecepientsScene() throws IOException{
+        SceneSwitcher.switchScene((Stage) welcomeText.getScene().getWindow(), "recepients-form-view.fxml", "Recepients Form");
+    }
+
 }

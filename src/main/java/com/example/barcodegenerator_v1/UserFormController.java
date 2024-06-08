@@ -1,10 +1,8 @@
 package com.example.barcodegenerator_v1;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,7 +16,7 @@ public class UserFormController {
     private TextField nameField;
 
     @FXML
-    private TextField descriptionField;
+    private TextField IBANField;
 
     @FXML
     private TextField emailField;
@@ -39,9 +37,15 @@ public class UserFormController {
 
         switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
     }
+
+    private boolean containsForbiddenCharacters(String input) {
+        return input.matches(".*[čćšđ].*");
+    }
+
+
     protected void clearFields() {
         nameField.clear();
-        descriptionField.clear();
+        IBANField.clear();
         emailField.clear();
         streetField.clear();
         zipField.clear();
@@ -50,21 +54,42 @@ public class UserFormController {
     @FXML
     protected void onSubmitButtonClick() {
         String name = nameField.getText();
-        String description = descriptionField.getText();
+        String IBAN = IBANField.getText();
         String email = emailField.getText();
         String street = streetField.getText();
         String zip = zipField.getText();
         String caller = callerField.getText();
 
+        // Validate input fields
+        if (containsForbiddenCharacters(name) || containsForbiddenCharacters(IBAN) ||
+                containsForbiddenCharacters(email) || containsForbiddenCharacters(street) ||
+                containsForbiddenCharacters(zip) || containsForbiddenCharacters(caller)) {
+            // Display error message
+            showError("Error: Input contains forbidden characters (č, ć, š, đ).");
+            return; // Do not proceed with saving
+        }
+
         // insert the user if it does not exist
         if (DatabaseHandler.getAllUsers().isEmpty()) {
-            DatabaseHandler.insertUser(name, description, email, street, zip, caller);
-        }else {
+            DatabaseHandler.insertUser(name, IBAN, email, street, zip, caller);
+        } else {
             // update the first user if it exists
-            DatabaseHandler.updateUser(name, description, email, street, zip, caller);
+            DatabaseHandler.updateUser(name, IBAN, email, street, zip, caller);
         }
         switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
     }
+
+    private void showError(String message) {
+        // Implement a way to show the error message to the user
+        // For example, using a Label or an Alert dialog
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
 
     @FXML
     protected void onCloseButtonClick() throws IOException {
@@ -79,7 +104,7 @@ public class UserFormController {
         if (!users.isEmpty()) {
             User user = users.getFirst(); // get the first user
             nameField.setText(user.getName());
-            descriptionField.setText(user.getDescription());
+            IBANField.setText(user.getIBAN());
             emailField.setText(user.getEmail());
             streetField.setText(user.getStreet());
             zipField.setText(user.getZip());

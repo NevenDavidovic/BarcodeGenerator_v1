@@ -3,11 +3,17 @@ package com.example.barcodegenerator_v1;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+
 
 import java.io.IOException;
 
 public class BarcodeApplication extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader;

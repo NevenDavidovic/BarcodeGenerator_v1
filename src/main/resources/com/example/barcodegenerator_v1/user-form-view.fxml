@@ -12,15 +12,15 @@
 
     <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime"/>
     <TextField fx:id="nameField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Opis placanja"/>
-    <TextField fx:id="descriptionField"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="IBAN:"/>
+    <TextField fx:id="IBANField"/>
     <Label text="Email:"/>
     <TextField fx:id="emailField"/>
     <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica"/>
     <TextField fx:id="streetField"/>
     <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poštanski broj i grad"/>
     <TextField fx:id="zipField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poziv na broj primatelja"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Gmail ključ"/>
     <TextField fx:id="callerField"/>
 
     <FlowPane alignment="CENTER" hgap="20.0" prefHeight="47.0" prefWidth="414.0">
