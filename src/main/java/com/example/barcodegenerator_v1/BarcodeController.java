@@ -50,5 +50,10 @@ public class BarcodeController {
         SceneSwitcher.switchScene(stage, "hello-view.fxml", "Hello Scene");
     }
 
+    @FXML
+    protected void switchToBarcodeScene() {
+        Stage stage = (Stage) welcomeText.getScene().getWindow();
+        SceneSwitcher.switchScene(stage, "barcode-generator.fxml", "Barcode Scene");
+    }
 
 }
