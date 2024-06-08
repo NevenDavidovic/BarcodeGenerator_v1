@@ -16,7 +16,7 @@ public class BarcodeApplication extends Application {
         if (DatabaseHandler.getAllUsers().isEmpty()) {
             fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("user-form-view.fxml"));
         } else {
-            fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("hello-view.fxml"));
+            fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("home-view.fxml"));
         }
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Hello!");

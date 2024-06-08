@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+import static com.example.barcodegenerator_v1.SceneSwitcher.switchScene;
+
 public class UserFormController {
     @FXML
     private TextField nameField;
@@ -35,7 +37,7 @@ public class UserFormController {
         clearFields();
         DatabaseHandler.deleteUser();
 
-        // TODO tu ubaciti da se promjeni scena na glavni prozor
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
     }
     protected void clearFields() {
         nameField.clear();
@@ -61,17 +63,12 @@ public class UserFormController {
             // update the first user if it exists
             DatabaseHandler.updateUser(name, description, email, street, zip, caller);
         }
-        // TODO tu ubaciti da se promjeni scena na glavni prozor
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
     }
 
     @FXML
-    // TODO prepraviti da se koristi klasa za prmjenu scene
     protected void onCloseButtonClick() throws IOException {
-        Stage stage = (Stage) nameField.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 800, 600);
-        stage.setScene(scene);
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
     }
 
 
