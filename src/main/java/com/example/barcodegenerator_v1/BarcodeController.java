@@ -22,7 +22,7 @@ public class BarcodeController {
         String textToEncode = "http://www.example.com"; // Replace with your desired text
 
         // Specify the output file path (adjust as needed)
-        String filePath = "C:\\Users\\Neven\\Desktop\\barcode.jpg";
+        String filePath = "C:\\Users\\Neven\\Desktop\\barcode.jpg";//put do slike
 
         BarcodeGenerator.generateBarcode(textToEncode, filePath);
 

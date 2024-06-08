@@ -12,7 +12,7 @@ public class BarcodeGenerator {
 
     public static void generateBarcode(String text, String filePath) throws IOException {
         Code128Writer writer = new Code128Writer();
-        BitMatrix matrix = writer.encode(text, BarcodeFormat.CODE_128, 500, 300);
+        BitMatrix matrix = writer.encode(text, BarcodeFormat.CODE_128, 1100, 700);
         MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(filePath));
     }
 }
