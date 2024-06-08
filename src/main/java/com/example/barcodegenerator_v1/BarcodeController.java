@@ -3,6 +3,7 @@ import com.google.zxing.WriterException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -42,4 +43,12 @@ public class BarcodeController {
 
         System.out.println("Barcode generated: " + filePath);
     }
+
+    @FXML
+    protected void switchToHelloScene() {
+        Stage stage = (Stage) welcomeText.getScene().getWindow();
+        SceneSwitcher.switchScene(stage, "hello-view.fxml", "Hello Scene");
+    }
+
+
 }
