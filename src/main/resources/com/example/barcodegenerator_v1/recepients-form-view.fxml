@@ -14,15 +14,15 @@
     <children>
         <VBox alignment="CENTER" layoutX="85.0" layoutY="155.0" prefHeight="390.0" prefWidth="658.0" spacing="10">
             <Text fx:id="confirmationText" fill="green" />
-            <TextField fx:id="nameField" promptText="Name" />
-            <TextField fx:id="addressField" promptText="Address" />
-            <TextField fx:id="cityField" promptText="City" />
-            <TextField fx:id="descriptionField" prefHeight="27.0" prefWidth="762.0" promptText="Description" />
+            <TextField fx:id="nameField" promptText="Ime organizacije" />
+            <TextField fx:id="addressField" promptText="Ulica i kbr." />
+            <TextField fx:id="cityField" promptText="Poštanski br. i Grad" />
+            <TextField fx:id="descriptionField" prefHeight="27.0" prefWidth="762.0" promptText="Opis plaćanja" />
             <TextField fx:id="emailField" promptText="Email" />
-            <TextField fx:id="modelField" promptText="Model" />
+            <TextField fx:id="modelField" promptText="Model plaćanja" />
             <TextField fx:id="pozivNaBrojField" promptText="Poziv na Broj" />
             <Label text="Molimo vas formatirajte iznos ispravno prem primjeru 125,00" style="-fx-color:red;"/>
-            <TextField fx:id="amountField" promptText="Amount" />
+            <TextField fx:id="amountField" promptText="Iznos" />
             <Button onAction="#handleSubmit" style="-fx-background-color: #28CE43;" text="Spremi" textFill="WHITE" />
         </VBox>
         <VBox alignment="CENTER" layoutX="100" layoutY="50" spacing="10" />

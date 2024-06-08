@@ -10,17 +10,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime:"/>
     <TextField fx:id="nameField"/>
     <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="IBAN:"/>
     <TextField fx:id="IBANField"/>
     <Label text="Email:"/>
     <TextField fx:id="emailField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica i kućni br.:"/>
     <TextField fx:id="streetField"/>
     <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poštanski broj i grad"/>
     <TextField fx:id="zipField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Gmail ključ"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Gmail ključ:"/>
     <TextField fx:id="callerField"/>
 
     <FlowPane alignment="CENTER" hgap="20.0" prefHeight="47.0" prefWidth="414.0">

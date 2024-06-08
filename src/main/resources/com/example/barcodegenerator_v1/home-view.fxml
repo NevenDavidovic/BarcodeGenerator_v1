@@ -26,7 +26,7 @@
         </rowConstraints>
         <children>
             <Button fx:id="editProfileButton" onAction="#onManageUserButtonClick" text="Uredi profil" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#switchToBarcodeScene" text="Barcode Generation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" onAction="#switchToBarcodeScene" text="Generiraj barkod" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button onAction="#switchToRecepientsScene" text="Upiši primatelja" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
         </children>
     </GridPane>
