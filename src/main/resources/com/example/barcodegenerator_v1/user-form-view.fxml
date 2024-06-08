@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox prefHeight="623.0" prefWidth="454.0" spacing="20.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barcodegenerator_v1.UserFormController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime"/>
+    <TextField fx:id="nameField"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Opis placanja"/>
+    <TextField fx:id="descriptionField"/>
+    <Label text="Email:"/>
+    <TextField fx:id="emailField"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica"/>
+    <TextField fx:id="streetField"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poštanski broj i grad"/>
+    <TextField fx:id="zipField"/>
+    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poziv na broj primatelja"/>
+    <TextField fx:id="callerField"/>
+
+    <FlowPane alignment="CENTER" hgap="20.0" prefHeight="47.0" prefWidth="414.0">
+        <Button onAction="#onSubmitButtonClick" text="Spremi"/>
+        <Button onAction="#onCloseButtonClick" text="Zatvori"/>
+        <Button onAction="#onDeleteButtonClick" text="Obrisi korisnika"/>
+    </FlowPane>
+</VBox>
