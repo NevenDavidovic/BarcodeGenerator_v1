@@ -13,6 +13,5 @@
 
     <Label fx:id="welcomeText"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
-s
     <Button text="Generate Barcode" onAction="#onGenerateBarcodeClick"/>
 </VBox>
