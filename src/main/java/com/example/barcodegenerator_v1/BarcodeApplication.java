@@ -33,6 +33,3 @@ public class BarcodeApplication extends Application {
         launch();
     }
 }
-
-// TODO napraviti background image
-
