@@ -22,6 +22,7 @@ public class BarcodeApplication extends Application {
             fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("home-view.fxml"));
         }
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        scene.getStylesheets().add(SceneSwitcher.class.getResource("/css/style.css").toExternalForm());
         stage.setTitle("Barcode Generator");
         stage.setScene(scene);
         stage.show();
@@ -32,6 +33,3 @@ public class BarcodeApplication extends Application {
         launch();
     }
 }
-
-// TODO napraviti background image
-

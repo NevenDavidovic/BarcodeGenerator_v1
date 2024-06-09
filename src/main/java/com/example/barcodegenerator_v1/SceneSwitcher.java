@@ -18,6 +18,7 @@ public class SceneSwitcher {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource(fxmlFile));
             Scene scene = new Scene(fxmlLoader.load(), width, height);
+            scene.getStylesheets().add(SceneSwitcher.class.getResource("/css/style.css").toExternalForm());
             stage.setTitle(title);
             stage.setScene(scene);
             stage.show();
@@ -26,4 +27,3 @@ public class SceneSwitcher {
         }
     }
 }
-
