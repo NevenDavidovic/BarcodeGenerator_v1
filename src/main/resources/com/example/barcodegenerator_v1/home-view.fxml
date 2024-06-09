@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="488.0" prefWidth="770.0" spacing="20.0" style="-fx-background-image: url('images/background.png'); -fx-background-size: cover;-fx-min-width: 800;-fx-min-height: 600;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.barcodegenerator_v1.HomeControler">
+<VBox alignment="CENTER" prefHeight="488.0" prefWidth="770.0" spacing="20.0"  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.barcodegenerator_v1.HomeControler">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
