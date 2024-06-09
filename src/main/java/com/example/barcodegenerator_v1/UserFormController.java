@@ -35,7 +35,7 @@ public class UserFormController {
         clearFields();
         DatabaseHandler.deleteUser();
 
-        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Barcode Generator");
     }
 
     private boolean containsForbiddenCharacters(String input) {
@@ -76,7 +76,7 @@ public class UserFormController {
             // update the first user if it exists
             DatabaseHandler.updateUser(name, IBAN, email, street, zip, caller);
         }
-        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Barcode Generator");
     }
 
     private void showError(String message) {
@@ -93,7 +93,7 @@ public class UserFormController {
 
     @FXML
     protected void onCloseButtonClick() throws IOException {
-        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Hello!");
+        switchScene((Stage) nameField.getScene().getWindow(), "home-view.fxml", "Barcode Generator");
     }
 
 
