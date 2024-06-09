@@ -13,6 +13,9 @@ module com.example.barcodegenerator_v1 {
     requires com.google.zxing;
     requires com.google.zxing.javase;
     requires java.sql;
+    requires itextpdf;
+    requires java.desktop;
+    requires javafx.swing;
 
     opens com.example.barcodegenerator_v1 to javafx.fxml;
     exports com.example.barcodegenerator_v1;

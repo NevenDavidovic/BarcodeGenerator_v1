@@ -21,6 +21,7 @@
    <children>
        <ListView fx:id="recipientsListView" prefHeight="200.0" prefWidth="300.0" />
        <ImageView fx:id="barcodeImageView" fitHeight="200" fitWidth="400" />
+       <Button fx:id="printButton" onAction="#printBarcodeToPdf" text="Print to PDF" />
       <GridPane>
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,6 +34,7 @@
         </rowConstraints>
          <children>
              <Button fx:id="homeButton" onAction="#switchToHelloScene" text="Home" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+
              <Button onAction="#deleteRecipient" text="Delete recepient" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

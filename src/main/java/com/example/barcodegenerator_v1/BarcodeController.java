@@ -1,18 +1,29 @@
 package com.example.barcodegenerator_v1;
 
 import com.google.zxing.WriterException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import javax.imageio.ImageIO;
 
 public class BarcodeController {
 
@@ -36,6 +47,39 @@ public class BarcodeController {
     protected void switchToHelloScene() {
         Stage stage = (Stage) homeButton.getScene().getWindow();
         SceneSwitcher.switchScene(stage, "home-view.fxml", "Barcode generator");
+    }
+
+    @FXML
+    protected void printBarcodeToPdf() {
+        try {
+            Document document = new Document();
+
+            // Create a FileChooser
+            FileChooser fileChooser = new FileChooser();
+
+            // Set extension filter
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // Show save file dialog
+            File file = fileChooser.showSaveDialog(null);
+
+            if (file != null) {
+                PdfWriter.getInstance(document, new FileOutputStream(file));
+                document.open();
+
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(barcodeImageView.getImage(), null);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(bufferedImage, "png", baos);
+                com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(baos.toByteArray());
+
+                document.add(image);
+                document.close();
+            }
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+        }
+        switchToHelloScene();
     }
 
     private void loadRecipients() {
