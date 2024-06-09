@@ -13,7 +13,7 @@ public class DatabaseHandler {
 
            //Uz pomoć koda ispod dropaju se stare tablice u slučaju mijenjanja naziva ili dodavanja novih polja
            //String dropUsersTable = "DROP TABLE IF EXISTS users;";
-           //String dropRecepeintsTable = "DROP TABLE IF EXISTS recepients;";
+           //String dropRecepeintsTable = "DROP TABLE IF EXISTS recipients;";
 
            String createUsersTable = """
                 CREATE TABLE IF NOT EXISTS users (
@@ -27,7 +27,7 @@ public class DatabaseHandler {
                 );""";
 
            String createRecepeintsTable = """
-                CREATE TABLE IF NOT EXISTS recepients (
+                CREATE TABLE IF NOT EXISTS recipients (
                     id integer PRIMARY KEY,
                     name text,
                     address text,
@@ -116,7 +116,7 @@ public class DatabaseHandler {
 
     //insert recipient
     public static void insertRecepient(String name, String address, String city, String description, String email, String model, String pozivNaBroj, String amount) {
-        String sql = "INSERT INTO recepients(name, address, city, description, email, model, poziv_na_broj, amount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO recipients(name, address, city, description, email, model, poziv_na_broj, amount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -135,9 +135,9 @@ public class DatabaseHandler {
     }
 
     // Retrieve all recipients
-    public static List<Recepient> getAllRecepients() {
-        String sql = "SELECT * FROM recepients";
-        List<Recepient> recepients = new ArrayList<>();
+    public static List<Recipient> getAllRecepients() {
+        String sql = "SELECT * FROM recipients";
+        List<Recipient> recipients = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -154,17 +154,17 @@ public class DatabaseHandler {
                 String pozivNaBroj = rs.getString("poziv_na_broj");
                 String amount = rs.getString("amount");
 
-                recepients.add(new Recepient(id, name, address, city, description, email, model, pozivNaBroj, amount));
+                recipients.add(new Recipient(id, name, address, city, description, email, model, pozivNaBroj, amount));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
-        return recepients;
+        return recipients;
     }
 
     // Method to delete a recipient by ID
-    public static void deleteRecipient(int id) {
+    public static void deleteRecepient(int id) {
         String sql = "DELETE FROM recipients WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

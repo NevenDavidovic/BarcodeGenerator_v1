@@ -46,7 +46,7 @@ public class HomeControler {
     }
     @FXML
     protected void switchToRecepientsScene() throws IOException{
-        SceneSwitcher.switchScene((Stage) welcomeText.getScene().getWindow(), "recepients-form-view.fxml", "Recepients Form");
+        SceneSwitcher.switchScene((Stage) welcomeText.getScene().getWindow(), "recipients-form-view.fxml", "Recepients Form");
     }
 
 }

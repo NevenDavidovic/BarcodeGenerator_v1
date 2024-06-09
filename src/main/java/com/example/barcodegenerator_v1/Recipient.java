@@ -1,6 +1,6 @@
 package com.example.barcodegenerator_v1;
 
-public class Recepient {
+public class Recipient {
     private int id;
     private String name;
     private String address;
@@ -11,7 +11,7 @@ public class Recepient {
     private String pozivNaBroj;
     private String amount;
 
-    public Recepient(int id, String name, String address, String city, String description, String email, String model, String pozivNaBroj, String amount) {
+    public Recipient(int id, String name, String address, String city, String description, String email, String model, String pozivNaBroj, String amount) {
         this.id = id;
         this.name = name;
         this.address = address;

@@ -1,10 +1,8 @@
 package com.example.barcodegenerator_v1;
 
-import com.example.barcodegenerator_v1.DatabaseHandler;
 import com.google.zxing.WriterException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,7 +35,7 @@ public class BarcodeController {
     @FXML
     protected void switchToHelloScene() {
         Stage stage = (Stage) homeButton.getScene().getWindow();
-        SceneSwitcher.switchScene(stage, "home-view.fxml", "Hello Scene");
+        SceneSwitcher.switchScene(stage, "home-view.fxml", "Barcode generator");
     }
 
     private void loadRecipients() {
@@ -45,10 +43,12 @@ public class BarcodeController {
         List<User> users = DatabaseHandler.getAllUsers();
         User user = users.isEmpty() ? null : users.get(0); // Assuming only one user is available
 
-        List<Recepient> recipients = DatabaseHandler.getAllRecepients();
-        for (Recepient recipient : recipients) {
+        // Formatting user data for display
+        List<Recipient> recipients = DatabaseHandler.getAllRecepients();
+        for (Recipient recipient : recipients) {
             recipientList.add(
-                    recipient.getName() + " - " +
+                            recipient.getId() + " - " +
+                            recipient.getName() + " - " +
                             recipient.getAddress() + " - " +
                             recipient.getCity() + " - " +
                             recipient.getDescription() + " - " +
@@ -59,6 +59,7 @@ public class BarcodeController {
             );
         }
 
+        // Display the list of recipients
         recipientsListView.setItems(recipientList);
 
         recipientsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -80,6 +81,18 @@ public class BarcodeController {
         });
 
 
+    }
+
+    // Function to delete a recipient from the list
+    @FXML
+    protected void deleteRecipient(){
+        String selectedRecipient = recipientsListView.getSelectionModel().getSelectedItem();
+        if (selectedRecipient != null) {
+            String[] recipientInfo = selectedRecipient.split(" - ");
+            int recipientId = Integer.parseInt(recipientInfo[0]);
+            DatabaseHandler.deleteRecepient(recipientId);
+            recipientList.remove(selectedRecipient);
+        }
     }
 
     private String constructBarcodeData(String recipientData, User user) {

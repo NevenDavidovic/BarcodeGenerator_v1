@@ -3,10 +3,7 @@ package com.example.barcodegenerator_v1;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 
 
 import java.io.IOException;
@@ -25,7 +22,7 @@ public class BarcodeApplication extends Application {
             fxmlLoader = new FXMLLoader(BarcodeApplication.class.getResource("home-view.fxml"));
         }
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Hello!");
+        stage.setTitle("Barcode Generator");
         stage.setScene(scene);
         stage.show();
     }
@@ -35,3 +32,6 @@ public class BarcodeApplication extends Application {
         launch();
     }
 }
+
+// TODO napraviti background image
+

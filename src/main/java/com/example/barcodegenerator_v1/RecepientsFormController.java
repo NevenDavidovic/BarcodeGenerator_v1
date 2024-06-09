@@ -36,6 +36,17 @@ public class RecepientsFormController {
         return input.matches(".*[čćšđ].*");
     }
 
+    private boolean isValidDouble(String amountField) {
+        try {
+            Double.parseDouble(amountField);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    private String formatDoubleToTwoDecimalPlaces(double value) {
+        return String.format("%.2f", value);
+    }
     @FXML
     private void handleSubmit() {
         String name = nameField.getText();
@@ -47,6 +58,13 @@ public class RecepientsFormController {
         String pozivNaBroj = pozivNaBrojField.getText();
         String amount = amountField.getText();
 
+        // Check if any field is empty
+        if (name.isEmpty() || address.isEmpty() || city.isEmpty() || description.isEmpty() ||
+            email.isEmpty() || model.isEmpty() || pozivNaBroj.isEmpty() || amount.isEmpty()) {
+            // Display error message
+            confirmationText.setText("Error: All fields are required.");
+            return; // Do not proceed with saving
+        }
         // Validate input fields
         if (containsForbiddenCharacters(name) || containsForbiddenCharacters(address) ||
                 containsForbiddenCharacters(city) || containsForbiddenCharacters(description) ||
@@ -56,6 +74,16 @@ public class RecepientsFormController {
             confirmationText.setText("Error: Input contains forbidden characters (č, ć, š, đ).");
             return; // Do not proceed with saving
         }
+        // Validate amount field to be a valid double type
+        if (!isValidDouble(amount)) {
+            // Display error message
+            confirmationText.setText("Error: Invalid amount format. Please enter a valid number");
+            return; // Do not proceed with saving
+        }
+        // Format amount to two decimal places
+        amount = formatDoubleToTwoDecimalPlaces(Double.parseDouble(amount));
+        amountField.setText(amount);
+
 
 
         // Proceed with saving if validation passes
@@ -85,7 +113,7 @@ public class RecepientsFormController {
     @FXML
     protected void switchToHomeScene() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
-        SceneSwitcher.switchScene(stage, "home-view.fxml", "Hello Scene");
+        SceneSwitcher.switchScene(stage, "home-view.fxml", "Barcode Generator");
     }
     @FXML
     protected void switchToBarcodeScene() throws IOException {
