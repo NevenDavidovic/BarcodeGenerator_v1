@@ -1,3 +1,49 @@
 .root {
-    -fx-background-color: #fffdf7;
+    -fx-background-image: url('../images/background.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.home-button {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-border-radius:8px;
+}
+
+.labelFormUser{
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.welcomingMessage {
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+
+}
+
+.return-button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#5379FF,#324899);
+    -fx-font-size: 18px;
+}
+
+.delete-button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#FF0000,#990000);
+    -fx-font-size: 18px;
+}
+
+.save-button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#146822,#28CE43);
+    -fx-font-size: 18px;
+}
+
+.listView{
+    -fx-border-radius:20px;
 }

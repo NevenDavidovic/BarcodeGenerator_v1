@@ -10,22 +10,22 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime:"/>
+    <Label styleClass="labelFormUser" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ime i prezime:"/>
     <TextField fx:id="nameField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="IBAN:"/>
+    <Label styleClass="labelFormUser" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="IBAN:"/>
     <TextField fx:id="IBANField"/>
-    <Label text="Email:"/>
+    <Label styleClass="labelFormUser" text="Email:"/>
     <TextField fx:id="emailField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica i kućni br.:"/>
+    <Label styleClass="labelFormUser" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Ulica i kućni br.:"/>
     <TextField fx:id="streetField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poštanski broj i grad"/>
+    <Label styleClass="labelFormUser" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Poštanski broj i grad"/>
     <TextField fx:id="zipField"/>
-    <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Gmail ključ:"/>
+    <Label styleClass="labelFormUser" alignment="TOP_LEFT" prefHeight="17.0" prefWidth="226.0" text="Gmail ključ:"/>
     <TextField fx:id="callerField"/>
 
     <FlowPane alignment="CENTER" hgap="20.0" prefHeight="47.0" prefWidth="414.0">
-        <Button onAction="#onSubmitButtonClick" text="Spremi"/>
-        <Button onAction="#onCloseButtonClick" text="Zatvori"/>
-        <Button onAction="#onDeleteButtonClick" text="Obrisi korisnika"/>
+        <Button styleClass="save-button" onAction="#onSubmitButtonClick" text="Spremi"/>
+        <Button styleClass="return-button" onAction="#onCloseButtonClick" text="Zatvori"/>
+        <Button styleClass="delete-button" onAction="#onDeleteButtonClick" text="Obriši korisnika"/>
     </FlowPane>
 </VBox>

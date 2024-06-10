@@ -87,21 +87,27 @@ public class BarcodeController {
         List<User> users = DatabaseHandler.getAllUsers();
         User user = users.isEmpty() ? null : users.get(0); // Assuming only one user is available
 
+        // Debugging: Log user data
+        System.out.println("User Data: " + user);
+
         // Formatting user data for display
         List<Recipient> recipients = DatabaseHandler.getAllRecepients();
         for (Recipient recipient : recipients) {
-            recipientList.add(
-                            recipient.getId() + " - " +
-                            recipient.getName() + " - " +
-                            recipient.getAddress() + " - " +
-                            recipient.getCity() + " - " +
-                            recipient.getDescription() + " - " +
-                            recipient.getEmail() + " - " +
-                            recipient.getModel() + " - " +
-                            recipient.getPozivNaBroj() + " - " +
-                            recipient.getAmount()
-            );
+            String recipientInfo =
+                    recipient.getName() + " - " +
+                    recipient.getAddress() + " - " +
+                    recipient.getCity() + " - " +
+                    recipient.getDescription() + " - " +
+                    recipient.getEmail() + " - " +
+                    recipient.getModel() + " - " +
+                    recipient.getPozivNaBroj() + " - " +
+                    recipient.getAmount();
+
+            recipientList.add(recipientInfo);
         }
+
+        // Debugging: Log recipient list
+        System.out.println("Recipient List: " + recipientList);
 
         // Display the list of recipients
         recipientsListView.setItems(recipientList);
@@ -123,13 +129,11 @@ public class BarcodeController {
                 }
             }
         });
-
-
     }
 
     // Function to delete a recipient from the list
     @FXML
-    protected void deleteRecipient(){
+    protected void deleteRecipient() {
         String selectedRecipient = recipientsListView.getSelectionModel().getSelectedItem();
         if (selectedRecipient != null) {
             String[] recipientInfo = selectedRecipient.split(" - ");
@@ -141,28 +145,30 @@ public class BarcodeController {
 
     private String constructBarcodeData(String recipientData, User user) {
         if (user == null) {
+            System.err.println("User is null");
             return "";
         }
 
         String[] recipientInfo = recipientData.split(" - ");
         if (recipientInfo.length != 8) {
+            System.err.println("Invalid recipient data: " + recipientData);
             return "";
         }
 
         String barcodeData = "HRVHUB30\n" +
                 "EUR\n" +
                 recipientInfo[7] + "\n" +             // amount_from_recepients_table
-                recipientInfo[0] + "\n" +             // name_from_recepients_table
-                recipientInfo[1] + "\n" +             // address_from_recepients_table
-                recipientInfo[2] + "\n" +             // city_from_recepients_table
+                recipientInfo[1] + "\n" +             // name_from_recepients_table
+                recipientInfo[2] + "\n" +             // address_from_recepients_table
+                recipientInfo[3] + "\n" +             // city_from_recepients_table
                 user.getName() + "\n" +               // name_from_user_table
                 user.getStreet() + "\n" +             // street_from_user_table
                 user.getZip() + "\n" +                // zip_from_user_table
                 user.getIBAN() + "\n" +               // IBAN_from_user_table
-                recipientInfo[5] + "\n" +             // model_from_recepient_table
-                recipientInfo[6] + "\n" +             // poziv_na_broj_from_recepient_table
+                recipientInfo[6] + "\n" +             // model_from_recepient_table
+                recipientInfo[5] + "\n" +             // poziv_na_broj_from_recepient_table
                 "\n" +                                // sifra_namjene (as empty string not from table)
-                recipientInfo[3];                     // opis placanja
+                recipientInfo[4];                     // opis placanja
 
         System.out.println("Constructed Barcode Data: " + barcodeData);
 
